@@ -1,6 +1,8 @@
-import enum
 import dataclasses
+import enum
 import struct
+import time
+
 from akari.models import Gamepad, Touch
 
 
@@ -130,7 +132,7 @@ class ControllerDataResponse(ControllerResponse):
             (int(0).to_bytes(6, "little", signed=False)) +  # second touch
 
             # Movement inputs
-            (int(0).to_bytes(8, "little", signed=False)) +  # TOOD: motion data timestamp (microseconds)
+            (int(time.time() / 1e-6).to_bytes(8, "little", signed=False)) +  # TOOD: motion data timestamp (microseconds)
             struct.pack("<f", float(accelerometer.x)) +
             struct.pack("<f", float(accelerometer.y)) +
             struct.pack("<f", float(accelerometer.z)) +

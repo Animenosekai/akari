@@ -1,13 +1,14 @@
 import typing
+import binascii
+import dataclasses
 
 
+@dataclasses.dataclass
 class Header:
-    def __init__(self, magic: typing.Literal["DSUS", "DSUC"], length: int, crc32: int, id: int, version: int = 1001) -> None:
-        self.magic = str(magic)
-        self.version = int(version)
-        self.length = int(length)
-        self.crc32 = int(crc32)
-        self.id = int(id)
+    magic: typing.Literal["DSUS", "DSUC"]
+    length: int
+    id: int
+    version: int = 1001
 
     @staticmethod
     def loads(data: bytes):
@@ -15,7 +16,6 @@ class Header:
             magic=data[:4],
             version=data[4:6],
             length=data[6:8],
-            crc32=data[8:12],
             id=data[12:16]
         )
 
@@ -23,10 +23,8 @@ class Header:
         return (self.magic.encode("utf-8") +
                 self.version.to_bytes(2, "little", signed=False) +
                 self.length.to_bytes(2, "little", signed=False) +
-                self.crc32.to_bytes(4, "little", signed=False) +
+                int(0).to_bytes(4, "little", signed=False) +  # CRC32, will be added when completing the packet
                 self.id.to_bytes(4, "little", signed=False))
 
-
-class MessageType:
-    def __init__(self) -> None:
-        pass
+    def add_crc32(self, data: bytes):
+        return data[:8] + (binascii.crc32(data) % (1 << 32)).to_bytes(4, "little", signed=False) + data[12:]
