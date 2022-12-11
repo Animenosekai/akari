@@ -225,7 +225,11 @@
 
         const touched = current.tpTouch === 1;
 
-        let id = this.touch.id;
+        if (this.touch && this.touch.id) {
+            var id = this.touch.id;
+        } else {
+            var id = 0;
+        }
         if (touched != this.touch.touched) {
             id = (id + 1) % 256 // increments the touch ID for 1 byte
         }

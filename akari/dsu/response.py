@@ -68,8 +68,8 @@ def generate_touch(touch: Touch):
     )
 
 
+@dataclasses.dataclass(kw_only=True)
 class ControllerDataResponse(ControllerResponse):
-    connected: bool
     packet: int
     gamepad: Gamepad
 
@@ -79,41 +79,56 @@ class ControllerDataResponse(ControllerResponse):
         sticks = self.gamepad.sticks
         accelerometer = self.gamepad.acceleration
         gyroscope = self.gamepad.gyroscope
+
+        def transform_stick(value: float):
+            # value is between -1 and 1
+            value += 1
+            # value is between 0 and 2
+            value /= 2
+            # value is between 0 and 1
+            value *= 255
+            # value is between 0 and 255
+            return int(value)
+
         return (
             super().dumps() +
+
+            self.gamepad.connected.to_bytes(1, "little", signed=False) +
+            self.packet.to_bytes(4, "little", signed=False) +
+
             # Button inputs
             sum([
-                (button << i - 1)
-                for button, i in enumerate(
-                    buttons.PAD.left,  # D-Pad Left
-                    buttons.PAD.down,  # D-Pad Down
-                    buttons.PAD.right,  # D-Pad Right
-                    buttons.PAD.up,  # D-Pad Up
-                    buttons.PLUS,  # Options
-                    buttons.STICKS.right,  # R3
+                (pressed << i - 1)
+                for i, pressed in enumerate([
+                    buttons.MINUS,  # Share
                     buttons.STICKS.left,  # L3
-                    buttons.MINUS  # Share
-                )]).to_bytes(1, "little", signed=False) +
+                    buttons.STICKS.right,  # R3
+                    buttons.PLUS,  # Options
+                    buttons.PAD.up,  # D-Pad Up
+                    buttons.PAD.right,  # D-Pad Right
+                    buttons.PAD.down,  # D-Pad Down
+                    buttons.PAD.left,  # D-Pad Left
+                ], start=1)]).to_bytes(1, "little", signed=False) +
             sum([
-                (button << i - 1)
-                for button, i in enumerate(
-                    buttons.Y,  # Y
-                    buttons.B,  # B
-                    buttons.A,  # A
-                    buttons.X,  # X
-                    buttons.R,  # R1
-                    buttons.L,  # L1
+                (pressed << i - 1)
+                for i, pressed in enumerate([
+                    buttons.ZL,  # L2
                     buttons.ZR,  # R2
-                    buttons.ZL  # L2
-                )]).to_bytes(1, "little", signed=False) +
+                    buttons.L,  # L1
+                    buttons.R,  # R1
+                    buttons.X,  # X
+                    buttons.A,  # A
+                    buttons.B,  # B
+                    buttons.Y,  # Y
+                ], start=1)]).to_bytes(1, "little", signed=False) +
             buttons.HOME.to_bytes(1, "little", signed=False) +
             touch.touched.to_bytes(1, "little", signed=False) +  # touch button (?)
 
             # Analog inputs
-            int(sticks.left.x).to_bytes(1, "little", signed=False) +
-            int(sticks.left.y).to_bytes(1, "little", signed=False) +
-            int(sticks.right.x).to_bytes(1, "little", signed=False) +
-            int(sticks.right.y).to_bytes(1, "little", signed=False) +
+            transform_stick(sticks.left.x).to_bytes(1, "little", signed=False) +
+            transform_stick(sticks.left.y).to_bytes(1, "little", signed=False) +
+            transform_stick(sticks.right.x).to_bytes(1, "little", signed=False) +
+            transform_stick(sticks.right.y).to_bytes(1, "little", signed=False) +
             (255 if buttons.PAD.left else 0).to_bytes(1, "little", signed=False) +
             (255 if buttons.PAD.down else 0).to_bytes(1, "little", signed=False) +
             (255 if buttons.PAD.right else 0).to_bytes(1, "little", signed=False) +
@@ -133,6 +148,7 @@ class ControllerDataResponse(ControllerResponse):
 
             # Movement inputs
             (int(time.time() / 1e-6).to_bytes(8, "little", signed=False)) +  # TOOD: motion data timestamp (microseconds)
+
             struct.pack("<f", float(accelerometer.x)) +
             struct.pack("<f", float(accelerometer.y)) +
             struct.pack("<f", float(accelerometer.z)) +

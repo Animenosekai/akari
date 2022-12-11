@@ -111,6 +111,7 @@ class Gamepad:
     """
     Gamepad state
     """
+    slot = 0
     connected: bool
     acceleration: Vector
     gyroscope: Vector

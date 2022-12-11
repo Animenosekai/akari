@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
     console.log("Welcome to the Wii U Dev Tools 🍡")
     // Create WebSocket connection.
-    const socket = new WebSocket('ws://192.168.1.54:8000');
+    const socket = new WebSocket('ws://' + window.location.host + "/akari");
 
     // Connection opened
     socket.addEventListener('open', function (event) {
