@@ -3,7 +3,7 @@ import pathlib
 import uuid
 
 from dacite import from_dict  # type: ignore
-from flask import send_file
+from flask import send_file, send_from_directory
 
 from akari.models import Gamepad
 from akari.server import app, sock
@@ -12,19 +12,27 @@ from akari.shared import DSU_CLIENTS, GAMEPADS
 BASE_DIRECTORY = pathlib.Path(__file__).parent.parent
 
 
+# @app.route('/')
+# def index():
+#     return send_file(BASE_DIRECTORY / "website" / "index.html")
+
+
+# @app.route('/scripts/main.js')
+# def main():
+#     return send_file(BASE_DIRECTORY / "website" / "scripts" / "main.js")
+
+
+# @app.route('/scripts/models.js')
+# def models():
+#     return send_file(BASE_DIRECTORY / "website" / "scripts" / "models.js")
+
 @app.route('/')
 def index():
-    return send_file(BASE_DIRECTORY / "website" / "index.html")
+    return send_from_directory(pathlib.Path(__file__).parent.parent / "website" / "out", "index.html")
 
-
-@app.route('/scripts/main.js')
-def main():
-    return send_file(BASE_DIRECTORY / "website" / "scripts" / "main.js")
-
-
-@app.route('/scripts/models.js')
-def models():
-    return send_file(BASE_DIRECTORY / "website" / "scripts" / "models.js")
+@app.route("/<path:path>")
+def website(path):
+    return send_from_directory(pathlib.Path(__file__).parent.parent / "website" / "out", path)
 
 
 @sock.route('/akari')

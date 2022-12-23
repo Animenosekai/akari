@@ -1,0 +1,96 @@
+.modals>* {
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    display: none;
+    padding: 20px 30px;
+    border: 1px dotted gray;
+    box-shadow: 0 0 8px -5px rgba(0, 0, 0, 0.69);
+    border-radius: 10px;
+    background-color: white;
+}
+
+
+.stick-modal {
+    display: flex;
+}
+
+.joysticks-reset-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: red; */
+    background-color: white;
+    border: 1px solid black;
+    /* border: none; */
+    border-radius: 5px;
+    /* color: white; */
+    font-weight: 500;
+    transform: scale(1);
+    transition: all 300ms ease;
+    opacity: 0.8;
+    width: max-content;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.joysticks-reset-btn:hover {
+    transform: scale(1.03);
+    opacity: 1;
+}
+
+.joysticks-reset-btn:active {
+    transform: scale(0.95);
+    opacity: 0.6;
+}
+
+
+.refresh-rate {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-input-description {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.settings-input-description>i {
+    opacity: 0.8;
+}
+
+.settings-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.settings-input-container>input {
+    padding: 5px 10px;
+    padding-right: 35px;
+    height: 20px;
+    border-radius: 5px;
+    font-size: medium;
+    border: none;
+    box-shadow: 0 0 8px -5px rgba(0, 0, 0, 0.69);
+}
+
+
+.settings-input-container>input::-webkit-outer-spin-button,
+.settings-input-container>input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.settings-input-container>input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+.settings-input-container>.unit {
+    margin-left: -30px;
+}

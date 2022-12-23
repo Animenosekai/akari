@@ -1,0 +1,21 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer>* {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.status-color {
+    background-color: rgb(18, 240, 18);
+    display: block;
+    height: 15px;
+    width: 15px;
+    border-radius: 25px;
+}

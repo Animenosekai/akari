@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akari - Use your Wii U Gamepad as a DSU Controller</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/modals.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <script src="/scripts/models.js"></script>
+    <script src="/scripts/main.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <h1>Welcome to Akari!</h1>
+
+        <div class="modals">
+            <div class="settings-modal modal">
+                <h2>Settings</h2>
+
+                <button class="joysticks-reset-btn">
+                    <img src="./images/tabler-icon-edit-circle-off.svg" alt="">
+                    <span>Reset Joysticks</span>
+                </button>
+
+                <div class="refresh-rate">
+                    <div class="settings-input-description">
+                        <h4>Refresh Rate</h4>
+                        <i>This is the inputs data update frequency (in ms)</i>
+                    </div>
+                    <div class="settings-input-container">
+                        <input type="number" name="rate" id="rate">
+                        <span class="unit">ms</span>
+                    </div>
+                </div>
+
+                <div class="refresh-rate">
+                    <div class="settings-input-description">
+                        <h4>DSU Port</h4>
+                        <i>This is the port used by the DSU server</i>
+                    </div>
+                    <div class="settings-input-container">
+                        <input type="number" name="port" id="port" readonly value="3000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="debug-modal">
+                <h2>Raw Output</h2>
+                <pre id="raw-output"></pre>
+            </div>
+
+            <!-- Sticks Correction Modal (hidden by default) -->
+            <div class="stick-modal">
+                <h2>{direction} Joystick</h2>
+
+                <!-- Virtual Joysticks -->
+                <div>
+                    <div>
+                        <h3>Raw Input</h3>
+                        <div></div>
+                    </div>
+
+                    <div>
+                        <h3>Corrected Input</h3>
+                        <div></div>
+                    </div>
+                </div>
+
+                <!-- Bezier Curves -->
+                <div>
+                    <div>Up</div>
+                    <div>Down</div>
+                    <div>Right</div>
+                    <div>Left</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gamepads-views">
+            <!-- Gamepads Views -->
+            
+        </div>
+
+        <div class="footer">
+            <div class="status">
+                <div class="status-color"></div>
+                <span class="status-text">Connected</span>
+            </div>
+            <div class="copyright">
+                <span>🍡 Animenosekai, 2022</span>
+                —
+                <span>{commit}</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
