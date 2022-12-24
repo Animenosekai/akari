@@ -13,13 +13,19 @@ export interface DebugModalProps extends HTMLAttributes<HTMLDivElement> {
 export const DebugModal = ({ className, output, onClose, ...props }: DebugModalProps) => {
     return <div className={cn("flex flex-col bg-white rounded-lg p-8 gap-10 w-[50vw] modal-dialog absolute bg-opacity-80 border text-left", className)}
     // @ts-ignore
-    dataStyle="display: flex; flex-direction: column;">
+    {...{
+        "data-style": "display: flex; flex-direction: column;"
+    }}>
         <div className="flex flex-row justify-between"
         // @ts-ignore
-        dataStyle="display: flex; flex-direction: row;">
+        {...{
+        "data-style": "display: flex; flex-direction: row;"
+    }}>
             <div className="flex flex-col"
             // @ts-ignore
-            dataStyle="display: flex; flex-direction: column;">
+            {...{
+        "data-style": "display: flex; flex-direction: column;"
+    }}>
                 <h2 className="text-3xl font-semibold">Raw Output</h2>
                 <i>This is the raw data sent to the computer</i>
             </div>

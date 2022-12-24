@@ -48,7 +48,16 @@ export const StickModal = ({ stick, className, output, onClose, ...props }: Stic
     const [data, setData] = useState<StickData>(defaultData);
 
     useEffect(() => {
-        setData(JSON.parse(window.localStorage.getItem(`${stick}-stick`) || ""));
+        try {
+            const localData = window.localStorage.getItem(`${stick}-stick`);
+            if (!localData) {
+                throw Error("There is no data in LocalStorage");
+            }
+            var newData: any = JSON.parse(localData)
+        } catch {
+            var newData: any = defaultData;
+        }
+        setData(newData);
     }, [stick])
 
     useEffect(() => {
@@ -59,14 +68,20 @@ export const StickModal = ({ stick, className, output, onClose, ...props }: Stic
         maxWidth: "98vw"
     }}
         // @ts-ignore
-        dataStyle="display: flex; flex-direction: column;"
+        {...{
+        "data-style": "display: flex; flex-direction: column;"
+    }}
     >
         <div className="flex flex-row justify-between"
             // @ts-ignore
-            dataStyle="display: flex; flex-direction: row;">
+            {...{
+        "data-style": "display: flex; flex-direction: row;"
+    }}>
             <div className="flex flex-col"
                 // @ts-ignore
-                dataStyle="display: flex; flex-direction: column;">
+                {...{
+        "data-style": "display: flex; flex-direction: column;"
+    }}>
                 <h2 className="text-3xl font-semibold">{`${stick === "right" ? "Right" : "Left"} Joystick Settings`}</h2>
                 <i>{`Here are the settings for the ${stick} joystick`}</i>
             </div>
@@ -76,7 +91,9 @@ export const StickModal = ({ stick, className, output, onClose, ...props }: Stic
             maxHeight: "60vh"
         }}
             // @ts-ignore
-            dataStyle="display: flex; flex-direction: row;"
+            {...{
+        "data-style": "display: flex; flex-direction: row;"
+    }}
         >
             <fieldset className="border-2 rounded ">
                 <legend className="mx-auto"><StickUp /></legend>

@@ -15,6 +15,7 @@
 - [Authors](#authors)
 - [Disclaimer](#disclaimer)
   - [Known Issues](#known-issues)
+    - [Unfixable](#unfixable)
 - [License](#license)
 
 ## Getting Started
@@ -82,14 +83,17 @@ Please make sure to update the tests as appropriate.
 
 ### Known Issues
 
-- You currently can't long-press the `B` button without returning to the home screen
-- The `Power` button is supported but is obviously not working
-- The `TV` button is supported but doesn't seem to be working
-- The `HOME` button is supported but is obviously not working
 - The bezier curves data are recorded to `LocalStorage` but, `LocalStorage` is cleared after quitting the browser and the values aren't used for now
 - The settings page doesn't work very well for now
 - There is a styling problem with the modals
 - The controller changes name after refreshing the webpage
+
+#### Unfixable
+
+- You currently can't long-press the `B` button without returning to the home screen
+- The `Power` button is supported but is obviously not working
+- The `TV` button is supported but doesn't seem to be working
+- The `HOME` button is supported but is obviously not working
 
 ## License
 

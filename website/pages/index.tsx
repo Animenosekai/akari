@@ -66,16 +66,12 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="p-5 flex flex-col gap-5 min-h-screen w-full"
-                // @ts-ignore
-                dataStyle="display: flex; flex-direction: column;">
+            <main className="p-5 flex flex-col gap-5 min-h-screen w-full">
                 <h1 className="text-3xl font-semibold">Welcome to Akari!</h1>
 
                 <div className={cn("pointer-events-none opacity-0 fixed z-10 w-screen h-screen left-0 top-0 transition duration-300 bg-white modal", {
                     "opacity-100 pointer-events-auto bg-opacity-[rgba(255, 255, 255, 0.5)] center": currentModal
-                })} style={{
-
-                }}>
+                })}>
                     {/* Modals */}
                     {
                         currentModal === "settings"
@@ -90,26 +86,18 @@ export default function Home() {
                     }
                 </div>
 
-                <div className='flex flex-row gap-3'
-                    // @ts-ignore
-                    dataStyle="display: flex; flex-direction: row;">
+                <div className='flex flex-row gap-3'>
                     <Button Icon={IconSettings} onClick={() => setCurrentModal("settings")}>Settings</Button>
                     <Button Icon={IconFileDescription} onClick={() => setCurrentModal("debug")}>Raw Output</Button>
                 </div>
 
-                <div className='flex flex-col items-center m-10'
-                    // @ts-ignore
-                    dataStyle="display: flex; flex-direction: column;">
+                <div className='flex flex-col items-center m-10'>
                     <GamepadSVG output={output} onLeftStickClick={() => setCurrentModal("l-stick")} onRightStickClick={() => setCurrentModal("r-stick")} />
                 </div>
 
-                <div className="flex flex-row justify-between"
-                    // @ts-ignore
-                    dataStyle="display: flex; flex-direction: row;">
+                <div className="flex flex-row justify-between">
                     {/* footer */}
-                    <div className='flex flex-row items-center gap-2'
-                        // @ts-ignore
-                        dataStyle="display: flex; flex-direction: row;">
+                    <div className='flex flex-row items-center gap-2'>
                         {/* circle */}
                         <div className={cn('h-4 w-4 block rounded-full', {
                             "bg-red-500": !connected,

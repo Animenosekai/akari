@@ -13,7 +13,9 @@ export const Button = ({ Icon, children, className, ...props }: ButtonProps) => 
         className,
     )}
     // @ts-ignore
-    dataStyle="display: flex; flex-direction: row;"
+    {...{
+        "data-style": "display: flex; flex-direction: row;"
+    }}
     {...props}>
         {Icon && <Icon />}
         {children}

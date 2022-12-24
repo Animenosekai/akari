@@ -89,21 +89,18 @@ const GamepadSVG = ({ output, onRightStickClick, onLeftStickClick, className, ..
                         fill="#F5F5F5"
                         strokeWidth={3}
                     />
-                    <g id="stick" fill={output.sticks.left.pressed ? ACTIVE_COLOR : "#fff"} style={{
-                        marginTop: `${output.sticks.left.y * 20}px`,
-                        marginRight: `${output.sticks.left.y * 20}px`
-                    }}>
+                    <g id="stick" fill={output.sticks.left.pressed ? ACTIVE_COLOR : "#fff"}>
                         <circle
                             id="stick-outside"
-                            cx={61.5}
-                            cy={80.5}
+                            cx={61.5 + output.sticks.left.x * 20}
+                            cy={80.5 - output.sticks.left.y * 20}
                             r={23}
                             strokeWidth={3}
                         />
                         <circle
                             id="stick-inside"
-                            cx={61.5}
-                            cy={80.5}
+                            cx={61.5 + output.sticks.left.x * 20}
+                            cy={80.5 - output.sticks.left.y * 20}
                             r={15.5}
                             strokeWidth={2}
                         />
@@ -120,21 +117,18 @@ const GamepadSVG = ({ output, onRightStickClick, onLeftStickClick, className, ..
                         fill="#F5F5F5"
                         strokeWidth={3}
                     />
-                    <g id="stick_2" fill={output.sticks.right.pressed ? ACTIVE_COLOR : "#fff"} style={{
-                        marginTop: output.sticks.right.x * 20,
-                        marginRight: output.sticks.right.y * 20
-                    }}>
+                    <g id="stick_2" fill={output.sticks.right.pressed ? ACTIVE_COLOR : "#fff"}>
                         <circle
                             id="stick-outside_2"
-                            cx={598.5}
-                            cy={80.5}
+                            cx={598.5 + output.sticks.right.x * 20}
+                            cy={80.5 - output.sticks.right.y * 20}
                             r={23}
                             strokeWidth={3}
                         />
                         <circle
                             id="stick-inside_2"
-                            cx={598.5}
-                            cy={80.5}
+                            cx={598.5 + output.sticks.right.x * 20}
+                            cy={80.5 - output.sticks.right.y * 20}
                             r={15.5}
                             strokeWidth={2}
                         />

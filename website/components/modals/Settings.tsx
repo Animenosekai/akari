@@ -13,10 +13,14 @@ interface SettingsModalInputProps extends DetailedHTMLProps<InputHTMLAttributes<
 const SettingsModalInput = ({ title, description, unit, className, ...props }: SettingsModalInputProps) => {
     return <div className={cn("flex flex-col gap-2", className)}
         // @ts-ignore
-        dataStyle="display: flex; flex-direction: column;">
+        {...{
+        "data-style": "display: flex; flex-direction: column;"
+    }}>
         <div className="flex flex-col"
             // @ts-ignore
-            dataStyle="display: flex; flex-direction: column;">
+            {...{
+        "data-style": "display: flex; flex-direction: column;"
+    }}>
             <h3 className="text-xl font-semibold">{title}</h3>
             <i>{description}</i>
         </div>
@@ -36,10 +40,14 @@ export interface SettingsModalProps extends HTMLAttributes<HTMLDivElement> {
 export const SettingsModal = ({ className, onClose, ...props }: SettingsModalProps) => {
     return <div className={cn("flex flex-col bg-white rounded-lg p-8 gap-10 w-[50vw] modal-dialog absolute bg-opacity-80 border", className)}
         // @ts-ignore
-        dataStyle="display: flex; flex-direction: column;">
+        {...{
+        "data-style": "display: flex; flex-direction: column;"
+    }}>
         <div className="flex flex-row justify-between"
             // @ts-ignore
-            dataStyle="display: flex; flex-direction: row;">
+            {...{
+        "data-style": "display: flex; flex-direction: row;"
+    }}>
             <h2 className="text-3xl font-semibold">Settings</h2>
             <Button Icon={IconX} onClick={onClose} />
         </div>
@@ -48,7 +56,9 @@ export const SettingsModal = ({ className, onClose, ...props }: SettingsModalPro
             dataStyle="display: flex;">
             <div className="flex flex-col gap-3"
                 // @ts-ignore
-                dataStyle="display: flex; flex-direction: column;">
+                {...{
+        "data-style": "display: flex; flex-direction: column;"
+    }}>
                 <h3 className="text-xl font-semibold">Joysticks</h3>
                 <Button Icon={IconEditCircleOff} onClick={() => {
                     window.localStorage.removeItem("right-stick");
