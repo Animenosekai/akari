@@ -10,11 +10,13 @@ from akari.server import app
 
 
 class Server:
+    """The DSU server"""
     def __init__(self) -> None:
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.__stopped = False
 
     def start(self, host: str = "localhost", port: int = 26760):
+        """Starts the DSU server"""
         self.__stopped = False
         app.logger.debug("Binding the DSU server to {}:{}".format(host, port))
         self.socket.bind((host, port))

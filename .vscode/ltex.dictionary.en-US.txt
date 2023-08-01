@@ -1,0 +1,8 @@
+Gamepad
+Cemu
+Ryujinx
+Cemuhook
+bezier-editor
+Nasse
+Sekai
+Animenosekai

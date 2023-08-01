@@ -4,6 +4,7 @@ import uuid
 
 from dacite import from_dict  # type: ignore
 from flask import send_file, send_from_directory
+from nasse import Dynamic
 
 from akari.models import Gamepad
 from akari.server import app, sock
@@ -30,7 +31,7 @@ BASE_DIRECTORY = pathlib.Path(__file__).parent.parent
 def index():
     return send_from_directory(pathlib.Path(__file__).parent.parent / "website" / "out", "index.html")
 
-@app.route("/<path:path>")
+@app.route("/<path:path>", dynamics=Dynamic("path", description="The path to the file to look for"))
 def website(path):
     return send_from_directory(pathlib.Path(__file__).parent.parent / "website" / "out", path)
 

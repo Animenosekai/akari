@@ -6,6 +6,8 @@
 
 - [Index](#index)
 - [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+    - [Python](#python)
 - [Installing](#installing)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -19,6 +21,18 @@
 - [License](#license)
 
 ## Getting Started
+
+### Prerequisites
+
+#### Python
+
+You will need Python 3 to use this module
+
+```bash
+# vermin output
+Minimum required versions: 3.8
+Incompatible versions:     2
+```
 
 First and foremost you need to download a copy of this repository.
 
@@ -48,16 +62,16 @@ To run `akari`, you need to launch `run.py` :
 python run.py
 ```
 
-You would then need to head to your Wii U, open the internet browser, and go to the following page [http://<your-computer-ip>:4800](http://<your-computer-ip>:4800)
+You would then need to head to your Wii U, open the internet browser, and go to the following page [http://\<your-computer-ip\>:4800](http://<your-computer-ip>:4800)
 
 > ***Note***  
 > You need to replace `<your-computer-ip>` with your computer IP address
 
-Once you see `Connected` at the bottom of the webpage, you can head to your favorite DSU client (i.e Cemu, Ryujinx, etc.) with the port `26760` (the default port for Cemuhook servers according to the protocol).
+Once you see `Connected` at the bottom of the webpage, you can head to your favorite DSU client (i.e. Cemu, Ryujinx, etc.) with the port `26760` (the default port for Cemuhook servers according to the [protocol](https://github.com/v1993/cemuhook-protocol)).
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an discussion first to discuss what you would like to change.
+Pull requests are welcome. For major changes, please open a discussion first to discuss what you would like to change.
 
 Please make sure to update the tests as appropriate.
 
@@ -67,13 +81,13 @@ Please make sure to update the tests as appropriate.
 
 - React
 - Next.js
-- TailwindCSS
+- Tailwind CSS
 - bezier-editor
 
 ### Server
 
 - [Nasse](https://github.com/Animenosekai/nasse)
-- flask_sock
+- [flask_sock](https://github.com/miguelgrinberg/flask-sock)
 
 ## Authors
 
@@ -83,7 +97,7 @@ Please make sure to update the tests as appropriate.
 
 ### Known Issues
 
-- The bezier curves data are recorded to `LocalStorage` but, `LocalStorage` is cleared after quitting the browser and the values aren't used for now
+- The Bézier curves data are recorded to `LocalStorage` but, `LocalStorage` is cleared after quitting the browser and the values aren't used for now
 - The settings page doesn't work very well for now
 - There is a styling problem with the modals
 - The controller changes name after refreshing the webpage
