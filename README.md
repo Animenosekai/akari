@@ -1,6 +1,17 @@
 # akari
 
-> Using your Wii U Gamepad as a DSU Controller.
+<img src="./assets/akari.png" alt="Akari" align="right" height="220px">
+
+***Use your Wii U Gamepad as a DSU controller!***
+
+<br>
+<br>
+
+[![GitHub - License](https://img.shields.io/github/license/Animenosekai/akari)](https://github.com/Animenosekai/akari/blob/master/LICENSE)
+[![GitHub top language](https://img.shields.io/github/languages/top/Animenosekai/akari)](https://github.com/Animenosekai/akari)
+![Code Size](https://img.shields.io/github/languages/code-size/Animenosekai/akari)
+![Repo Size](https://img.shields.io/github/repo-size/Animenosekai/akari)
+![Issues](https://img.shields.io/github/issues/Animenosekai/akari)
 
 ## Index
 
@@ -24,6 +35,16 @@
 
 ### Prerequisites
 
+First and foremost you need to download a copy of this repository.
+
+To do so, use git :
+
+```bash
+git clone https://github.com/Animenosekai/akari.git
+```
+
+Or download the zip archive.
+
 #### Python
 
 You will need Python 3 to use this module
@@ -33,16 +54,6 @@ You will need Python 3 to use this module
 Minimum required versions: 3.8
 Incompatible versions:     2
 ```
-
-First and foremost you need to download a copy of this repository.
-
-To do so, use git :
-
-```bash
-git clone https://github.com/Animenosekai/akari.git
-```
-
-Or download the zip.
 
 ## Installing
 
