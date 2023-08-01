@@ -2,7 +2,7 @@
 
 <img src="./assets/akari.png" alt="Akari" align="right" height="220px">
 
-***Use your Wii U Gamepad as a DSU controller!***
+***Use your Wii U Gamepad as a DSU controller 🧃***
 
 <br>
 <br>
