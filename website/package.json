@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.0",
+    "@next/swc-darwin-arm64": "^13.4.13",
     "@tabler/icons": "^1.118.0",
     "@types/node": "18.11.17",
     "@types/react-dom": "18.0.9",
